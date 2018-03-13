@@ -201,7 +201,34 @@ assets/js/theme/checkout/checkout.jsx
 package.json
 
 ## Add Customer
+Create file `customer.jsx` in `assets/js/theme/checkout/`. It should be `assets/js/theme/checkout/customer.jsx` This where we are going to add in the code to pull the information about which customer the checkout belongs to. Add the code from [add link here]
 
+After the page reloads, there is a section for customers to login. After loggin in it shows a simple message confirming the customer has logged in.[add - image here].
+
+
+```
+export default class CustomerComponent extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            email: '',
+            password: '',
+        };
+    }
+
+    componentWillReceiveProps({ customer }) {
+        if (this.props.customer !== customer) {
+            this.setState({
+                email: customer.email || '',
+                password: '',
+            });
+        }
+    }
+
+```
+
+In React you can also use setState when logging customers in and out. `componentWillReceiveProps` is when  `props` are passed to the Component instance. This is useful for when a customer needs to type into a input or this case a email and password box. It will compare the incoming proprs to the current props and depending on the value React can make a decision on what to do next. 
 
 Files Changed
 assets/js/theme/checkout/checkout.jsx
