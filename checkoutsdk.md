@@ -205,30 +205,16 @@ Create file `customer.jsx` in `assets/js/theme/checkout/`. It should be `assets/
 
 After the page reloads, there is a section for customers to login. After loggin in it shows a simple message confirming the customer has logged in.[add - image here].
 
-
-```
-export default class CustomerComponent extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            email: '',
-            password: '',
-        };
-    }
-
-    componentWillReceiveProps({ customer }) {
-        if (this.props.customer !== customer) {
-            this.setState({
-                email: customer.email || '',
-                password: '',
-            });
-        }
-    }
-
-```
-
 In React you can also use setState when logging customers in and out. `componentWillReceiveProps` is when  `props` are passed to the Component instance. This is useful for when a customer needs to type into a input or this case a email and password box. It will compare the incoming proprs to the current props and depending on the value React can make a decision on what to do next. 
+Open the React console and start typing into the email and password box. You can see the values being updated. 
+[add gif here]
+
+The inital state is a blank email address and password. The component should expect values from those props and they are waiting on change. 
+The state change happens onSubmit when the button is clicked and when there is data in the email/password. Clicking signin with nothing there doesn't generate any feedback. 
+
+The `&&` in the `this.props.customer.isGuest` is saying if the customer is a guest & this other data/state exists. 
+
+
 
 Files Changed
 assets/js/theme/checkout/checkout.jsx
