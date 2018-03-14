@@ -200,7 +200,7 @@ assets/js/theme/checkout/cart.jsx
 assets/js/theme/checkout/checkout.jsx
 package.json
 
-## Add Customer
+## Add Customer Anything else I should note here...?
 Create file `customer.jsx` in `assets/js/theme/checkout/`. It should be `assets/js/theme/checkout/customer.jsx` This where we are going to add in the code to pull the information about which customer the checkout belongs to. Add the code from [add link here]
 
 After the page reloads, there is a section for customers to login. After loggin in it shows a simple message confirming the customer has logged in.[add - image here].
@@ -214,6 +214,9 @@ The state change happens onSubmit when the button is clicked and when there is d
 
 The `&&` in the `this.props.customer.isGuest` is saying if the customer is a guest & this other data/state exists. 
 
+Now we are going to update the `assets/js/theme/checkout/checkout.jsx` to render the customer section that was created. We need to update the
+`const` to handle errors and add in the customer. 
+#Need to explain this more
 
 
 Files Changed
