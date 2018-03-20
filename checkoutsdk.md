@@ -1,7 +1,9 @@
 Example App Current Location: https://github.com/RobinOng/cornerstone/commits/sdk-example
+
 Current SDK Location: https://github.com/bigcommerce/checkout-sdk-js
 
 Please note these are subject to change at this time
+
 ----
 
 # Creating a custom checkout using the BigCommerce Checkout SDK
@@ -245,11 +247,17 @@ assets/js/theme/checkout/customer.jsx
 ```
 
 ## Add Shipping
+
 Since React allows for components to be split for use later, shipping will be broken into shipping and shipping-options. Where `Shipping` will contain the `Shipping Options` component. 
 
 The `Shipping Options` component will contain what is setup on the store for customers to get items shipped. In the example image Flat Rate is enabled on the store. 
 
-Create the file `assets/js/theme/checkout/shipping-options.jsx`. It will contain the ShippingOptionsComponent
+Create the file `assets/js/theme/checkout/shipping-options.jsx`. It will contain the  `ShippingOptionsComponent`. This uses radio buttons from material-ui. But this can be changed to whatever option you want for the shipping. This works out the box with the built in shipping providers. 
+
+The options are looped over using `.map` in React which required a key. In this case its `option.id`. From there when the button(radio) is clicked the shipping option is updated. 
+
+Next create `assets/js/theme/checkout/address.jsx`. This is where the shipping address information will be located. 
+
 
 [Add Image here of Shipping console]
 
