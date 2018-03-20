@@ -72,18 +72,16 @@ In `checkout.html` replace `{{{ checkout.checkout_content }}}` with `<div id="ch
 
 At this point you should see Checkout in the React Console and the checkout page. (add the screenshot here)
 
-Files Changed
-`Delete assets/js/theme/checkout.js`
+### Files Changed:
 
-`assets/js/theme/checkout.jsx`
-
-`assets/js/theme/checkout/checkout.jsx`
-
-`package.json`
-
-`templates/pages/checkout.html`
-
-`webpack.conf.js`
+```
+assets/js/theme/checkout.js
+assets/js/theme/checkout.jsx
+assets/js/theme/checkout/checkout.jsx
+package.json
+templates/pages/checkout.html
+webpack.conf.js
+```
 
 ## Import SDK
 
