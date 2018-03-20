@@ -258,6 +258,10 @@ The options are looped over using `.map` in React which required a key. In this 
 
 Next create `assets/js/theme/checkout/address.jsx`. This is where the shipping address information will be located. 
 
+This will be used in the Shipping component to populate the fields available for the customers shipping name and address.  
+
+(Need to see if the functions for subdivisions will be avail in file release)
+
 
 [Add Image here of Shipping console]
 
