@@ -12,27 +12,21 @@ First Steps:
 The checkout is written in JavaScript and is composed of components that can be used together in designing the checkout. 
 The components are cart, customer, shipping and billing.
 
-Components:(Should these have definitions?)
-Cart: 
-Product
-Subtotal
-Shipping
-Tax
-Total
+Components we are using:(Should these have definitions?)
 
+Cart [Link each one to the final object]
 Customer
-
 Shipping
-
 Billing
 
 
 ## Quick Notes: 
 
 * This tutorial assume knowledge of JavaScript, HTML, CSS and [React](https://reactjs.org/). 
-* The Bigcommere store must also have Optimized [One Page Checkout](https://support.bigcommerce.com/articles/Public/Optimized-Single-Page-Checkout/) enabled otherwise the changes will not be read when stencil is started.
+* BigCommerce stores using Stencil must also have Optimized [One Page Checkout](https://support.bigcommerce.com/articles/Public/Optimized-Single-Page-Checkout/) enabled otherwise the changes will not be read when Stencil is started.
+* This also works on legacy Blueprint Stores. 
 * To troubleshoot React issues it helps to use the [React Chrome plugin](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) from Facebook. It creates a new tab in the devloper console where React specific errors are located. 
-* You will need to either make a copy of your existing stencil theme or download a copy of the [Cornerstone theme](https://github.com/bigcommerce/cornerstone.git) and be famaliar with the [stencil cli](https://stencil.bigcommerce.com/). The stencil cli and Cornerstone dependencies will need to be installed before hand.
+* You will need to either make a copy of your existing Stencil theme or download a copy of the [Cornerstone theme](https://github.com/bigcommerce/cornerstone.git) and be familiar with the [Stencil CLI](https://stencil.bigcommerce.com/). The Stencil CLI and Cornerstone dependencies will need to be installed before hand.
 * Having a few items added to your cart locally will help in following along. 
 * There should be an item with a gift certificate and an item with a coupon code added since they will be used in the example app later.
 * Knowing how to use the developer tools console will give you access to the object which will be needed to see how objects should be referenced.
@@ -79,12 +73,17 @@ In `checkout.html` replace `{{{ checkout.checkout_content }}}` with `<div id="ch
 At this point you should see Checkout in the React Console and the checkout page. (add the screenshot here)
 
 Files Changed
-Delete assets/js/theme/checkout.js
-assets/js/theme/checkout.jsx
-assets/js/theme/checkout/checkout.jsx
-package.json
-templates/pages/checkout.html
-webpack.conf.js
+`Delete assets/js/theme/checkout.js`
+
+`assets/js/theme/checkout.jsx`
+
+`assets/js/theme/checkout/checkout.jsx`
+
+`package.json`
+
+`templates/pages/checkout.html`
+
+`webpack.conf.js`
 
 ## Import SDK
 
