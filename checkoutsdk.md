@@ -1,7 +1,8 @@
-# Creating a custom checkout using the Bigcommerce Checkout SDK
+# Creating a custom checkout using the BigCommerce Checkout SDK
 
-## Give this a heading
-The Bigcommerce Checkout SDK allows for custom design to the Unified Checkout Out. By allowing Bigcommerce to handle the functionality, designers and developers can
+## What is the BigCommerce SDK?
+
+The BigCommerce Checkout SDK allows for custom design to the Unified Checkout Out. By allowing BigCommerce to handle the functionality, designers and developers can
 focus on creating a customized checkout experience. 
 This tutorial will walk through creating a checkout using React.
 
@@ -227,7 +228,7 @@ The `&&` in the `this.props.customer.isGuest` is saying if the customer is a gue
 Now we are going to update the `assets/js/theme/checkout/checkout.jsx` to render the customer section that was created. We need to update the
 `const` to handle errors and add in the customer. 
 
-#Need to explain this more
+(Need to explain this more)
 
 
 Files Changed:
@@ -238,6 +239,24 @@ assets/js/theme/checkout/customer.jsx
 ```
 
 ## Add Shipping
+Since React allows for components to be split for use later, shipping will be broken into shipping and shipping-options. Where `Shipping` will contain the `Shipping Options` component. 
+
+The `Shipping Options` component will contain what is setup on the store for customers to get items shipped. In the example image Flat Rate is enabled on the store. 
+
+Create the file `assets/js/theme/checkout/shipping-options.jsx`. It will contain the ShippingOptionsComponent
+
+[Add Image here of Shipping console]
+
+
+Files Changed:
+
+```
+assets/js/theme/checkout/address.jsx
+assets/js/theme/checkout/checkout.jsx
+assets/js/theme/checkout/shipping-options.jsx
+assets/js/theme/checkout/shipping.jsx
+```
+
 ## Add Billing
 
 ## Final Steps
@@ -247,4 +266,5 @@ assets/js/theme/checkout/customer.jsx
 * If using a new copy of Cornerstone, did you follow all the steps to get [Stencil CLI](https://stencil.bigcommerce.com/docs/installing-and-launching-stencil-1) installed? 
 * Make sure for Stencil you are using NPM versions between 4x - 7x.
 * Check the React tab in the console to step through the app
+* In this React example the only thing `assets/js/checkout.jsx` is going is rendering the  `Checkout` created to the DOM. All edits should be in the `checkout/... ` folder after the initial setup. 
 
