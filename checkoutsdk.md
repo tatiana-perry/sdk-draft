@@ -7,9 +7,9 @@ This tutorial will walk through creating a checkout using React.
 
 Want to jump to a the finished project? The Checkout SDK sample app can be downloaded (here)[add-link-here]. Needs link
 
-## Heading again
-First Steps:
-The checkout is written in JavaScript and is composed of components that can be used together in designing the checkout. 
+## First Steps:
+
+This app is written in React (JSX) and is made of components that can be used together in designing the checkout. 
 The components are cart, customer, shipping and billing.
 
 Components we are using:(Should these have definitions?)
@@ -32,6 +32,7 @@ Billing
 * Knowing how to use the developer tools console will give you access to the object which will be needed to see how objects should be referenced.
 
 ## Add Checkout Page Object
+
 In the app.js we need to add the theme reference for checkout.
 Then in checkout.html we are adding 3 scripts. 
 
@@ -50,12 +51,15 @@ This is loading Bootstrap into out stencil theme.
 Run `stencil start` and navigate to your localhost/checkout and open the console. 
 Should see the Checkout page in the console. [add screenshot here]
 
-Files changed: 
+Files changed:
+```
 assets/js/app.js
 assets/js/theme/checkout.js
 templates/pages/checkout.html
+```
 
 ## Import React
+
 We are going to remove the checkout.js. We know the checkout location is working after being added to the app.js after rendering it in the console. 
 In `package.json` we need to add `"react": "^16.0.0"` and `"react-dom": "^16.0.0"`. We also need to add 
 `"babel-preset-react": "^6.24.1"`. [Babel](https://babeljs.io/) is a complier that takes JSX and converts it into JavaScript for the browser. The Babel plugin is needed to support using JSX within React. 
@@ -89,7 +93,7 @@ Now that React has been imported and we setup the skeleton for the checkout app,
 `@bigcommerce/checkout-sdk": "git+ssh://git@github.com:bigcommerce/checkout-sdk-js.git"`.
 Run `npm install` to install the package.
 
-In `assets/js/theme/checkout/checkout.jsx` we need to initialize a `CheckoutService`. Then we are going to add in a Checkout. In this code we are importing React and the CheckoutService. The CheckoutService loads the intial checkout state. We first call `construtor(props)` then `super(props)` since we are accessing the `props` inside the construtor class we need to use `super(props)`. To learn more about [`constructor`](https://reactjs.org/docs/react-component.html#constructor). After the component is mounter we log to the console the cart created which has moved into the checkout portion. 
+In `assets/js/theme/checkout/checkout.jsx` we need to initialize a `CheckoutService`. Then we are going to add in a Checkout. In this code we are importing React and the CheckoutService[link to this object]. The CheckoutService loads the intial checkout state. We first call `construtor(props)` then `super(props)` since we are accessing the `props` inside the construtor class we need to use `super(props)`. To learn more about [`constructor`](https://reactjs.org/docs/react-component.html#constructor). After the component is mounted we log to the console the cart created, which has moved into the checkout portion. 
 
 ```
 import React from 'react';
@@ -123,12 +127,16 @@ Run `stencil start` and go to `http://localhost:3000/checkout` and open the the 
 [add image here of console with object] - also link to a gist where they can review it there
 
 
-Files Changed: 
+Files Changed:
+
+```
 assets/js/theme/checkout/checkout.jsx
 package.json
+```
 
 
 ## Add Cart
+
 We are going to add `accounting` which helps with number and currency formatting and `material-ui` which imports Google's material UI. The material ui is an optional step and you can use anything you like for styling.
 Run `npm install` and restart stencil cli if needed. Update `assets/js/theme/checkout/checkout.jsx` and create `assets/js/theme/checkout/cart.jsx` to match the the sample app. Refresh checkout and now there should be Cart with the items if you have added any, Subtotal, Shipping, Tax and Total. 
 [add image]
@@ -166,7 +174,7 @@ For example the current checkout page does not list Coupons or Gift Certificates
 ```                    
 
 Stencil should have reloaded at this point and now you can see a new line that says Gift Certificate, but it shows $0. If you have a gift certificate added to an item in your cart, you can see that $0 is incorrect. We need to see what to call for the Gift Certificate to get the amount. In the 
-`assets/js/theme/checkout/checkout.jsx` add `console.log(checkout.getCart());`. You can add it right under `const { checkout } = this.service.getState();`. Open the dev tool and the object should be printed to the console. Find `giftCertificate` and then `totalDiscountAmount`. Update the ListItem to read: 
+`assets/js/theme/checkout/checkout.jsx` add `console.log(checkout.getCart());`. You can add it right under `const { checkout } = this.service.getState();`. Open the dev tool and the object should be printed to the console. Find `giftCertificate` and then `totalDiscountAmount`. Update the `ListItem` to read: 
 ```
                     <ListItem>
                         <ListItemText primary="Gift Certficate" />
@@ -176,6 +184,7 @@ Stencil should have reloaded at this point and now you can see a new line that s
                     </ListItem>
 
 ```
+
 Make sure the page refreshes and now the Gift Certificate Amount is displayed. To add the coupon `this.props.cart.coupon.discountedAmount`. 
 
 In `assets/js/theme/checkout/checkout.jsx` there were are a few changes that need to be made. This `.then(({ checkout }) => console.log(checkout.getCart()));` was replaced with `.then(() => this.setState({ isLoading: false }));` [`setState`](https://reactjs.org/docs/react-component.html#setstate) queues changes to the component and tell React the componenet and its children need to updated(re-rendered) with the new state. 
@@ -192,12 +201,16 @@ in `assets/js/theme/checkout/checkout.jsx`, the text Checkout needed to be repla
 
 ```
 
-Files Changes
+Files Changed:
+
+```
 assets/js/theme/checkout/cart.jsx
 assets/js/theme/checkout/checkout.jsx
 package.json
+````
 
-## Add Customer Anything else I should note here...?
+## Add Customer (Anything else I should note here...?)
+
 Create file `customer.jsx` in `assets/js/theme/checkout/`. It should be `assets/js/theme/checkout/customer.jsx` This where we are going to add in the code to pull the information about which customer the checkout belongs to. Add the code from [add link here]
 
 After the page reloads, there is a section for customers to login. After loggin in it shows a simple message confirming the customer has logged in.[add - image here].
@@ -213,13 +226,16 @@ The `&&` in the `this.props.customer.isGuest` is saying if the customer is a gue
 
 Now we are going to update the `assets/js/theme/checkout/checkout.jsx` to render the customer section that was created. We need to update the
 `const` to handle errors and add in the customer. 
+
 #Need to explain this more
 
 
-Files Changed
+Files Changed:
+
+```
 assets/js/theme/checkout/checkout.jsx
 assets/js/theme/checkout/customer.jsx
-
+```
 
 ## Add Shipping
 ## Add Billing
@@ -227,9 +243,8 @@ assets/js/theme/checkout/customer.jsx
 ## Final Steps
 
 ## Troubleshooting
-npm install
-npm install bigcommerce
-nvm use 4.4.0
-TroubleShooting sometimes running npm install can change nvm version, Make sure to change back
-Also remove the package.lock.json and run npm install again
+* Did you remember to run `npm install` after changing the `package.json`?
+* If using a new copy of Cornerstone, did you follow all the steps to get [Stencil CLI](https://stencil.bigcommerce.com/docs/installing-and-launching-stencil-1) installed? 
+* Make sure for Stencil you are using NPM versions between 4x - 7x.
+* Check the React tab in the console to step through the app
 
