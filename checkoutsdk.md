@@ -1,3 +1,9 @@
+Example App Current Location: https://github.com/RobinOng/cornerstone/commits/sdk-example
+Current SDK Location: https://github.com/bigcommerce/checkout-sdk-js
+
+Please note these are subject to change at this time
+----
+
 # Creating a custom checkout using the BigCommerce Checkout SDK
 
 ## What is the BigCommerce SDK?
