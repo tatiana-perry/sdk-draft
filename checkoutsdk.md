@@ -18,7 +18,7 @@ Want to jump to a the finished project? The Checkout SDK sample app can be downl
 
 ## First Steps:
 
-This app is written in React (JSX) and is made of components that can be used together in designing the checkout. 
+This app is written in React (JSX) and is made of components that can be used together in designing and customizing the checkout. 
 The components are cart, customer, shipping and billing.
 
 Components we are using:(Should these have definitions?)
@@ -31,33 +31,44 @@ Billing
 
 ## Quick Notes: 
 
-* This tutorial assume knowledge of JavaScript, HTML, CSS and [React](https://reactjs.org/). 
-* BigCommerce stores using Stencil must also have Optimized [One Page Checkout](https://support.bigcommerce.com/articles/Public/Optimized-Single-Page-Checkout/) enabled otherwise the changes will not be read when Stencil is started.
+* This tutorial assumes knowledge of JavaScript, HTML, CSS and [React](https://reactjs.org/). 
+* BigCommerce stores using Stencil must also have Optimized [One Page Checkout](https://support.bigcommerce.com/articles/Public/Optimized-Single-Page-Checkout/) enabled otherwise the changes will not be read when Stencil is started. (is 'changes' referring to the custom changes the storeowner makes to the checkout page?)
 * This also works on legacy Blueprint Stores. 
-* To troubleshoot React issues it helps to use the [React Chrome plugin](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) from Facebook. It creates a new tab in the devloper console where React specific errors are located. 
-* You will need to either make a copy of your existing Stencil theme or download a copy of the [Cornerstone theme](https://github.com/bigcommerce/cornerstone.git) and be familiar with the [Stencil CLI](https://stencil.bigcommerce.com/). The Stencil CLI and Cornerstone dependencies will need to be installed before hand.
+* To troubleshoot React issues, it helps to use the [React Chrome plugin](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) that's offered by Facebook. The plugin creates a new tab in the developer console that outlines where React specific errors are located. 
+* You will need to either make a copy of your existing Stencil theme (does the reader know how to do this already or can we link to a page that outlines how to do this?) or download a copy of the [Cornerstone theme](https://github.com/bigcommerce/cornerstone.git) and be familiar with the [Stencil CLI](https://stencil.bigcommerce.com/). The Stencil CLI and Cornerstone dependencies will need to be installed before hand.
 * Having a few items added to your cart locally will help in following along. 
 * There should be an item with a gift certificate and an item with a coupon code added since they will be used in the example app later.
-* Knowing how to use the developer tools console will give you access to the object which will be needed to see how objects should be referenced.
+* Knowing how to use the developer tools console will give you access to the object which will be needed (what will be needed? The method of accessing an object or the object itself?) to see how objects should be referenced.
 
 ## Add Checkout Page Object
 
-In the app.js we need to add the theme reference for checkout.
-Then in checkout.html we are adding 3 scripts. 
+In the app.js file we need to add the theme reference for checkout. 
 
-`<script>window.__webpack_public_path__ = "{{cdn 'assets/dist/'}}";</script>` This is allowing us to use webpack to specify the base path for all assets. `window` is an object supported by all browsers. It references the browsers window. 
+(Do we need to add in this line of code into the app.js file? this is what I'm seeing on the PR: 
+checkout: () => import('./theme/checkout')
+??)
 
-`<script src="{{cdn 'assets/dist/theme-bundle.main.js'}}"></script>` This is where the main theme bundle is located.
+
+Then in checkout.html we are adding the following 3 scripts: 
+
+`<script>window.__webpack_public_path__ = "{{cdn 'assets/dist/'}}";</script>` 
+
+This is allowing us to use webpack to specify the base path for all assets. `window` is an object supported by all browsers. It references the browsers window. 
+
+`<script src="{{cdn 'assets/dist/theme-bundle.main.js'}}"></script>` 
+
+This is where the main theme bundle is located.
 
 ```
 <script>
     window.stencilBootstrap("{{page_type}}", {{jsContext}}).load();
 </script>
 ```
-This is loading Bootstrap into out stencil theme. 
+
+This is loading Bootstrap into our stencil theme. 
 
 
-Run `stencil start` and navigate to your localhost/checkout and open the console. 
+Run `stencil start` in your command line and navigate to your localhost. Once you are there, checkout and open the developers console. 
 Should see the Checkout page in the console. [add screenshot here]
 
 Files changed:
@@ -69,14 +80,16 @@ templates/pages/checkout.html
 
 ## Import React
 
-We are going to remove the checkout.js. We know the checkout location is working after being added to the app.js after rendering it in the console. 
+We are going to remove the checkout.js (did you mean to write checkout.js file*?). We know the checkout location is working after being added to the app.js after rendering it in the console. (what exactly did we add in app.js?)
+
 In `package.json` we need to add `"react": "^16.0.0"` and `"react-dom": "^16.0.0"`. We also need to add 
-`"babel-preset-react": "^6.24.1"`. [Babel](https://babeljs.io/) is a complier that takes JSX and converts it into JavaScript for the browser. The Babel plugin is needed to support using JSX within React. 
+`"babel-preset-react": "^6.24.1"`. [Babel](https://babeljs.io/) is a compiler that takes JSX and converts it into JavaScript for the browser. The Babel plugin is needed to support using JSX within React. 
 
 Now we need to update `webpack.conf.js`. React uses the file extension .jsx instead of .js. JSX is an extension to JavaScript and create React elements. JSX needs to be added as part of the extensions.
-Run `npm install` here since we added to the package.json file. 
 
-Add a new folder `checkout` to `assets/js/theme/` and in that folder add a new file `checkout.jsx`. The final path should look like `assets/js/theme/checkout/checkout.jsx`. Here we import React and create the `CheckoutComponent` for the app. Right now its going to load the word Checkout on the page. 
+At this point, you will need to run `npm install` since we've modified and added to the package.json file. 
+
+Add a new folder `checkout` to `assets/js/theme/`. In the checkout folder, add a new file `checkout.jsx`. The final path should look like `assets/js/theme/checkout/checkout.jsx`. Here we import React and create the `CheckoutComponent` for the app. Right now its going to load the word Checkout on the page. 
 
 Add another `checkout.jsx` file in the main `theme` folder. The final path should be `assets/js/theme/checkout.jsx`
 This page imports our `CheckoutComponent` and renders it in the DOM. `<Checkout />` is our app which is going to be rendered in the `checkout-app` div we are going to create. 
