@@ -116,6 +116,8 @@ webpack.conf.js
 
 ## Import SDK
 
+In your copy of Cornerstone update the theme files to match [this](#add robins app link here)
+
 Now that React has been imported and we setup the skeleton for the checkout app, we are going to import the SDK. In your `package.json` add 
 `@bigcommerce/checkout-sdk": "git+ssh://git@github.com:bigcommerce/checkout-sdk-js.git"`.
 Run `npm install` to install the package.
@@ -162,7 +164,9 @@ package.json
 ```
 
 
-## Add Cart
+## Add Cart 
+
+In your copy of Cornerstone update the theme files to match [this](#add robins app link here)
 
 We are going to add `accounting` which helps with number and currency formatting and `material-ui` which imports Google's material UI. The material ui is an optional step and you can use anything you like for styling.
 Run `npm install` and restart stencil cli if needed. Update `assets/js/theme/checkout/checkout.jsx` and create `assets/js/theme/checkout/cart.jsx` to match the the sample app. Refresh checkout and now there should be Cart with the items if you have added any, Subtotal, Shipping, Tax and Total. 
@@ -238,6 +242,8 @@ package.json
 
 ## Add Customer (Anything else I should note here...?)
 
+In your copy of Cornerstone update the theme files to match [this](#add robins app link here)
+
 Create file `customer.jsx` in `assets/js/theme/checkout/`. It should be `assets/js/theme/checkout/customer.jsx` This where we are going to add in the code to pull the information about which customer the checkout belongs to. Add the code from [add link here]
 
 After the page reloads, there is a section for customers to login. After loggin in it shows a simple message confirming the customer has logged in.[add - image here].
@@ -254,7 +260,7 @@ The `&&` in the `this.props.customer.isGuest` is saying if the customer is a gue
 Now we are going to update the `assets/js/theme/checkout/checkout.jsx` to render the customer section that was created. We need to update the
 `const` to handle errors and add in the customer. 
 
-(Need to explain this more)
+**(Need to explain this more)**
 
 
 Files Changed:
@@ -294,6 +300,12 @@ assets/js/theme/checkout/shipping.jsx
 ```
 
 ## Add Billing
+
+(Where is the list of countries, cities etc pulling from?)
+
+## Add Payment
+
+## Add Confirmation Page
 
 ## Final Steps
 
