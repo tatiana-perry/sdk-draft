@@ -24,31 +24,34 @@ The components are cart, customer, shipping and billing.
 Components we are using:(Should these have definitions?)
 
 Cart [Link each one to the final object]
+
 Customer
+
 Shipping
+
 Billing
+
+Payment
+
 
 
 ## Quick Notes: 
 
 * This tutorial assumes knowledge of JavaScript, HTML, CSS and [React](https://reactjs.org/). 
-* BigCommerce stores using Stencil must also have Optimized [One Page Checkout](https://support.bigcommerce.com/articles/Public/Optimized-Single-Page-Checkout/) enabled otherwise the changes will not be read when Stencil is started. (is 'changes' referring to the custom changes the storeowner makes to the checkout page?)
+* BigCommerce stores using Stencil must also have Optimized [One Page Checkout](https://support.bigcommerce.com/articles/Public/Optimized-Single-Page-Checkout/) enabled otherwise the changes to the [/checkout](#/checkout) will not be read when Stencil is started. 
 * This also works on legacy Blueprint Stores. 
 * To troubleshoot React issues, it helps to use the [React Chrome plugin](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) that's offered by Facebook. The plugin creates a new tab in the developer console that outlines where React specific errors are located. 
-* You will need to either make a copy of your existing Stencil theme (does the reader know how to do this already or can we link to a page that outlines how to do this?) or download a copy of the [Cornerstone theme](https://github.com/bigcommerce/cornerstone.git) and be familiar with the [Stencil CLI](https://stencil.bigcommerce.com/). The Stencil CLI and Cornerstone dependencies will need to be installed before hand.
+* You will need to either make a [copy](https://stencil.bigcommerce.com/docs/downloading-and-refreshing-cornerstone#backup) of your existing Stencil theme or download a copy of the [Cornerstone theme](https://github.com/bigcommerce/cornerstone.git) and be familiar with the [Stencil CLI](https://stencil.bigcommerce.com/). The Stencil CLI and Cornerstone dependencies will need to be installed before hand.
 * Having a few items added to your cart locally will help in following along. 
 * There should be an item with a gift certificate and an item with a coupon code added since they will be used in the example app later.
-* Knowing how to use the developer tools console will give you access to the object which will be needed (what will be needed? The method of accessing an object or the object itself?) to see how objects should be referenced.
+* Knowing how to use the developer tools console along with the React Chrome plugin will give you access to the objects which we will point out how to use during this tutorial.
 
 ## Add Checkout Page Object
 
-In the app.js file we need to add the theme reference for checkout. 
+In your copy of Cornerstone update the theme files to match [this](#add robins app link here)
 
-(Do we need to add in this line of code into the app.js file? this is what I'm seeing on the PR: 
-checkout: () => import('./theme/checkout')
-??)
-
-
+In the app.js file we need to add the theme reference for checkout. `checkout: () => import('./theme/checkout')`
+ 
 Then in checkout.html we are adding the following 3 scripts: 
 
 `<script>window.__webpack_public_path__ = "{{cdn 'assets/dist/'}}";</script>` 
@@ -79,6 +82,8 @@ templates/pages/checkout.html
 ```
 
 ## Import React
+
+In your copy of Cornerstone update the theme files to match [this](#add robins app link here)
 
 We are going to remove the checkout.js (did you mean to write checkout.js file*?). We know the checkout location is working after being added to the app.js after rendering it in the console. (what exactly did we add in app.js?)
 
