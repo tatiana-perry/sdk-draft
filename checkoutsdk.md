@@ -71,7 +71,7 @@ templates/pages/checkout.html
 
 In your copy of Cornerstone update the theme files to match [this](#add robins app link here)
 
-We are going to remove the checkout.js (did you mean to write checkout.js file*?). We know the checkout location is working after being added to the app.js after rendering it in the console. (what exactly did we add in app.js?)
+We are going to remove the checkout.js file. We know the checkout location is working after being added to the app.js after rendering it in the console.
 
 In `package.json` we need to add `"react": "^16.0.0"` and `"react-dom": "^16.0.0"`. We also need to add 
 `"babel-preset-react": "^6.24.1"`. [Babel](https://babeljs.io/) is a compiler that takes JSX and converts it into JavaScript for the browser. The Babel plugin is needed to support using JSX within React. 
@@ -80,10 +80,10 @@ Now we need to update `webpack.conf.js`. React uses the file extension .jsx inst
 
 At this point, you will need to run `npm install` since we've modified and added to the package.json file. 
 
-Add a new folder `checkout` to `assets/js/theme/`. In the checkout folder, add a new file `checkout.jsx`. The final path should look like `assets/js/theme/checkout/checkout.jsx`. Here we import React and create the `CheckoutComponent` for the app. Right now its going to load the word Checkout on the page. 
+Add a new folder `checkout` to `assets/js/theme/`. In the checkout folder, add a new file `checkout.jsx`. The final path should look like `assets/js/theme/checkout/checkout.jsx`. Here we import React and create the [`CheckoutComponent`](#add comp link here) for the app. Right now its going to load the word Checkout on the page. 
 
 Add another `checkout.jsx` file in the main `theme` folder. The final path should be `assets/js/theme/checkout.jsx`
-This page imports our `CheckoutComponent` and renders it in the DOM. `<Checkout />` is our app which is going to be rendered in the `checkout-app` div we are going to create. 
+This page imports our [`CheckoutComponent`](#add component link here) and renders it in the DOM. `<Checkout />` is our app which is going to be rendered in the `checkout-app` div we are going to create. 
 
 In `checkout.html` replace `{{{ checkout.checkout_content }}}` with `<div id="checkout-app"></div>`
 
@@ -108,7 +108,7 @@ Now that React has been imported and we setup the skeleton for the checkout app,
 `@bigcommerce/checkout-sdk": "git+ssh://git@github.com:bigcommerce/checkout-sdk-js.git"`.
 Run `npm install` to install the package.
 
-In `assets/js/theme/checkout/checkout.jsx` we need to initialize a `CheckoutService`. Then we are going to add in a Checkout. In this code we are importing React and the CheckoutService[link to this object]. The CheckoutService loads the intial checkout state. We first call `construtor(props)` then `super(props)` since we are accessing the `props` inside the construtor class we need to use `super(props)`. To learn more about [`constructor`](https://reactjs.org/docs/react-component.html#constructor). After the component is mounted we log to the console the cart created, which has moved into the checkout portion. 
+In `assets/js/theme/checkout/checkout.jsx` we need to initialize a [`CheckoutService`](#addlink). Then we are going to add in a Checkout. In this code we are importing React and the CheckoutService. The CheckoutService loads the intial checkout state. We first call `construtor(props)` then `super(props)` since we are accessing the `props` inside the construtor class we need to use `super(props)`. To learn more about [`constructor`](https://reactjs.org/docs/react-component.html#constructor). After the component is mounted we log to the console the cart created, which has moved into the checkout portion. 
 
 ```
 import React from 'react';
@@ -155,10 +155,10 @@ package.json
 In your copy of Cornerstone update the theme files to match [this](#add robins app link here)
 
 We are going to add `accounting` which helps with number and currency formatting and `material-ui` which imports Google's material UI. The material ui is an optional step and you can use anything you like for styling.
-Run `npm install` and restart stencil cli if needed. Update `assets/js/theme/checkout/checkout.jsx` and create `assets/js/theme/checkout/cart.jsx` to match the the sample app. Refresh checkout and now there should be Cart with the items if you have added any, Subtotal, Shipping, Tax and Total. 
+Run `npm install` and restart stencil cli if needed. Update `assets/js/theme/checkout/checkout.jsx` and create `assets/js/theme/checkout/cart.jsx` to match the the sample app. Refresh checkout and now there should be Cart with the [items] if you have added any, [Subtotal], [Shipping], [Tax] and [Total]. 
 [add image]
 
-Let's go over `assets/js/theme/checkout/cart.jsx`. This file contains the Items,Subtotal, Shipping, Tax and Grand Total. It is broken down into list items, that can be removed or changed to create a customized option. 
+Let's go over `assets/js/theme/checkout/cart.jsx`. This file contains the Items, Subtotal, Shipping, Tax and Grand Total. It is broken down into list items, that can be removed or changed to create a customized option. 
 
 This section loops through the items tha that have been added to the cart and displays, the name, picture(s), amount and quantity.
 
@@ -226,11 +226,11 @@ assets/js/theme/checkout/checkout.jsx
 package.json
 ````
 
-## Add Customer (Anything else I should note here...?)
+## Add Customer
 
 In your copy of Cornerstone update the theme files to match [this](#add robins app link here)
 
-Create file `customer.jsx` in `assets/js/theme/checkout/`. It should be `assets/js/theme/checkout/customer.jsx` This where we are going to add in the code to pull the information about which customer the checkout belongs to. Add the code from [add link here]
+Create file `customer.jsx` in `assets/js/theme/checkout/`. It should be `assets/js/theme/checkout/customer.jsx` This where we are going to add in the code to pull the information about which customer the checkout belongs to. We are calling `getCustomer()`, `getSignInError`, `signInCustomer` and `signOutCustomer`.
 
 After the page reloads, there is a section for customers to login. After loggin in it shows a simple message confirming the customer has logged in.[add - image here].
 
@@ -239,15 +239,12 @@ Open the React console and start typing into the email and password box. You can
 [add gif here]
 
 The inital state is a blank email address and password. The component should expect values from those props and they are waiting on change. 
-The state change happens onSubmit when the button is clicked and when there is data in the email/password. Clicking signin with nothing there doesn't generate any feedback. 
+The state change happens `onSubmit` when the button is clicked and when there is data in the email/password. Clicking signin with nothing there doesn't generate any feedback. 
 
 The `&&` in the `this.props.customer.isGuest` is saying if the customer is a guest & this other data/state exists. 
 
 Now we are going to update the `assets/js/theme/checkout/checkout.jsx` to render the customer section that was created. We need to update the
 `const` to handle errors and add in the customer. 
-
-**(Need to explain this more)**
-
 
 Files Changed:
 
@@ -270,8 +267,6 @@ Next create `assets/js/theme/checkout/address.jsx`. This is where the shipping a
 
 This will be used in the Shipping component to populate the fields available for the customers shipping name and address.  
 
-(Need to see if the functions for subdivisions will be avail in file release)
-
 
 [Add Image here of Shipping console]
 
@@ -287,7 +282,11 @@ assets/js/theme/checkout/shipping.jsx
 
 ## Add Billing
 
-(Where is the list of countries, cities etc pulling from?)
+*Note: 
+The countries and subdivisons are being pulled from fake seed data in the app. It will need to be replaced for production stores.
+
+
+
 
 ## Add Payment
 
