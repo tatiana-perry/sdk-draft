@@ -59,7 +59,7 @@ This is loading Bootstrap into our stencil theme.
 
 Run `stencil start` in your command line and navigate to your localhost. Once you are there go to your localhost/checkout and open the developers console.
 You should see Checkout page in the console.
-!(Checkout page console)[/assets/console_log_add_checkout_object.png]
+![Checkout page console](/assets/console_log_add_checkout_object.png)
 
 Files changed:
 ```
