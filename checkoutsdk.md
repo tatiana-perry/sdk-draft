@@ -18,25 +18,7 @@ Want to jump to a the finished project? The Checkout SDK sample app can be downl
 
 ## First Steps:
 
-This app is written in React (JSX) and is made of components that can be used together in designing and customizing the checkout. 
-The components are cart, customer, shipping and billing.
-
-Components we are using:
-
-* [Function Create Checkout Service](https://github.com/davidchin/checkout-sdk-js/tree/convert_ts_docs_test/docs#createcheckoutservice)
-
-* [Method Get Cart](https://github.com/davidchin/checkout-sdk-js/blob/convert_ts_docs_test/docs/classes/checkoutselector.md#getcart)
-
-* [Methond Load Checkout](https://github.com/davidchin/checkout-sdk-js/blob/convert_ts_docs_test/docs/classes/checkoutclient.md#loadcheckout)
-
-* [Method Get State](https://github.com/davidchin/checkout-sdk-js/blob/convert_ts_docs_test/docs/classes/checkoutservice.md#getstate)
-
-* [Interfaces Internal Cart](https://github.com/davidchin/checkout-sdk-js/blob/convert_ts_docs_test/docs/interfaces/internalcart.md)
-
-* [Methods Get Customer](https://github.com/davidchin/checkout-sdk-js/blob/convert_ts_docs_test/docs/classes/checkoutselector.md#getcustomer)
-
-
-
+This app is written in React (JSX) and is made of components that can be used together in designing and customizing the checkout. We will setup a cart, customer, shipping, billing, payment and order confirmation. 
 
 
 ## Quick Notes: 
@@ -48,7 +30,7 @@ Components we are using:
 * You will need to either make a [copy](https://stencil.bigcommerce.com/docs/downloading-and-refreshing-cornerstone#backup) of your existing Stencil theme or download a copy of the [Cornerstone theme](https://github.com/bigcommerce/cornerstone.git) and be familiar with the [Stencil CLI](https://stencil.bigcommerce.com/). The Stencil CLI and Cornerstone dependencies will need to be installed before hand.
 * Having a few items added to your cart locally will help in following along. 
 * There should be an item with a gift certificate and an item with a coupon code added since they will be used in the example app later.
-* Knowing how to use the developer tools console along with the React Chrome plugin will give you access to the objects which we will point out how to use during this tutorial.
+* Knowing how to use the developer tools console along with the React Chrome plugin will allow you to see the objects in the console.
 
 ## Add Checkout Page Object
 
