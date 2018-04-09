@@ -59,6 +59,7 @@ This is loading Bootstrap into our stencil theme.
 
 Run `stencil start` in your command line and navigate to your localhost. Once you are there go to your localhost/checkout and open the developers console.
 You should see Checkout page in the console.
+
 ![Checkout page console](/assets/console_log_add_checkout_object.png)
 
 Files changed:
@@ -88,7 +89,9 @@ This page imports our [`CheckoutComponent`](#add component link here) and render
 
 In `checkout.html` replace `{{{ checkout.checkout_content }}}` with `<div id="checkout-app"></div>`
 
-At this point you should see Checkout in the React Console and the checkout page. (add the screenshot here)
+At this point you should see Checkout in the React Console and the checkout page.
+
+![Checkout React](/assets/import_react_add_checkout.png)
 
 ### Files Changed:
 
@@ -140,7 +143,7 @@ export default class CheckoutComponent extends React.Component {
 
 Run `stencil start` and go to `http://localhost:3000/checkout` and open the the console to see a checkout object. Add something to the cart and then navigate back to the checkout to see more information loaded in the object. Keep this object in mind since it will serve as a reference for what you can show on the checkout and is needed in the next step.
 
-[add image here of console with object] - also link to a gist where they can review it there
+![Checkout Object React Console](/assets/checkout_object_console_log.png)
 
 
 Files Changed:
@@ -205,7 +208,7 @@ Stencil should have reloaded at this point and now you can see a new line that s
 
 Make sure the page refreshes and now the Gift Certificate Amount is displayed. To add the coupon `this.props.cart.coupon.discountedAmount`.
 
-In `assets/js/theme/checkout/checkout.jsx` there were are a few changes that need to be made. This `.then(({ checkout }) => console.log(checkout.getCart()));` was replaced with `.then(() => this.setState({ isLoading: false }));` [`setState`](https://reactjs.org/docs/react-component.html#setstate) queues changes to the component and tell React the componenet and its children need to updated(re-rendered) with the new state.
+In `assets/js/theme/checkout/checkout.jsx` there were are a few changes that need to be made. This `.then(({ checkout }) => console.log(checkout.getCart()));` was replaced with `.then(() => this.setState({ isLoading: false }));` [`setState`](https://reactjs.org/docs/react-component.html#setstate) queues changes to the component and tell React the component and its children need to updated(re-rendered) with the new state.
 
 in `assets/js/theme/checkout/checkout.jsx`, the text Checkout needed to be replaced by the Cart portion of the checkout.
 
@@ -239,13 +242,12 @@ In React you can also use setState when logging customers in and out. `component
 Open the React console and start typing into the email and password box. You can see the values being updated.
 [add gif here]
 
-The inital state is a blank email address and password. The component should expect values from those props and they are waiting on change.
-The state change happens `onSubmit` when the button is clicked and when there is data in the email/password. Clicking signin with nothing there doesn't generate any feedback.
+The initial state is a blank email address and password. The component should expect values from those props and they are waiting on change.
+The state change happens `onSubmit` when the button is clicked and when there is data in the email/password. Clicking sign in with nothing there doesn't generate any feedback.
 
 The `&&` in the `this.props.customer.isGuest` is saying if the customer is a guest & this other data/state exists.
 
-Now we are going to update the `assets/js/theme/checkout/checkout.jsx` to render the customer section that was created. We need to update the
-`const` to handle errors and add in the customer.
+Now we are going to update the `assets/js/theme/checkout/checkout.jsx` to render the customer section that was created. We need to update the `const` to handle errors and add in the customer.
 
 Files Changed:
 
