@@ -10,28 +10,32 @@ Please note these are subject to change at this time
 
 ## What is the BigCommerce SDK?
 
-The BigCommerce Checkout SDK allows for custom design to the Unified Checkout Out. By allowing BigCommerce to handle the functionality, designers and developers can
+The [BigCommerce Checkout SDK](https://github.com/bigcommerce/checkout-sdk-js) allows for custom design to the Unified Checkout Out. By allowing BigCommerce to handle the functionality, designers and developers can
 focus on creating a customized checkout experience. 
 This tutorial will walk through creating a checkout using React.
 
-Want to jump to a the finished project? The Checkout SDK sample app can be downloaded (here)[add-link-here]. Needs link
+Want to jump to a the finished project? The Checkout SDK sample app can be downloaded (here)
 
 ## First Steps:
 
 This app is written in React (JSX) and is made of components that can be used together in designing and customizing the checkout. 
 The components are cart, customer, shipping and billing.
 
-Components we are using:(Should these have definitions?)
+Components we are using:
 
-Cart [Link each one to the final object]
+* [Function Create Checkout Service](https://github.com/davidchin/checkout-sdk-js/tree/convert_ts_docs_test/docs#createcheckoutservice)
 
-Customer
+* [Method Get Cart](https://github.com/davidchin/checkout-sdk-js/blob/convert_ts_docs_test/docs/classes/checkoutselector.md#getcart)
 
-Shipping
+* [Methond Load Checkout](https://github.com/davidchin/checkout-sdk-js/blob/convert_ts_docs_test/docs/classes/checkoutclient.md#loadcheckout)
 
-Billing
+* [Method Get State](https://github.com/davidchin/checkout-sdk-js/blob/convert_ts_docs_test/docs/classes/checkoutservice.md#getstate)
 
-Payment
+* [Interfaces Internal Cart](https://github.com/davidchin/checkout-sdk-js/blob/convert_ts_docs_test/docs/interfaces/internalcart.md)
+
+* [Methods Get Customer](https://github.com/davidchin/checkout-sdk-js/blob/convert_ts_docs_test/docs/classes/checkoutselector.md#getcustomer)
+
+
 
 
 
