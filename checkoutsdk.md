@@ -163,7 +163,7 @@ Run `npm install` and restart stencil cli if needed. Update `assets/js/theme/che
 
 ![Items added in cart](/assets/add_cart.png)
 
-Let's go over `assets/js/theme/checkout/cart.jsx`. This file contains the Items, Subtotal, Shipping, Tax and Grand Total. It is broken down into list items, that can be removed or changed to create a customized option.
+Let's go over `assets/js/theme/checkout/cart.jsx`. This file contains the Items, Subtotal, Shipping, Tax and Grand Total. It is broken down into list items, that can be removed or changed to create a customized option. These are accessed through the [`InternalCart`](https://github.com/bigcommerce/checkout-sdk-js/blob/4c24192f59f696877769ce58e3284898e9e4c914/docs/interfaces/internalcart.md). Within `InternalCart` there are further objects such as `lineitem` where the properties of a line item can be pulled from. This is where `{item.id}` and `{item.quantity}` are being referenced from.
 
 This section loops through the items that have been added to the cart and displays, the name, picture(s), amount and quantity.
 
@@ -207,7 +207,7 @@ Stencil should have reloaded at this point and now you can see a new line that s
 
 ```
 
-Make sure the page refreshes and now the Gift Certificate Amount is displayed. To add the coupon `this.props.cart.coupon.discountedAmount`.
+Make sure the page refreshes and now the Gift Certificate Amount is displayed. To add the coupon add or change it to: `this.props.cart.coupon.discountedAmount`.
 
 In `assets/js/theme/checkout/checkout.jsx` there were are a few changes that need to be made. This `.then(({ checkout }) => console.log(checkout.getCart()));` was replaced with `.then(() => this.setState({ isLoading: false }));` [`setState`](https://reactjs.org/docs/react-component.html#setstate) queues changes to the component and tell React the component and its children need to updated(re-rendered) with the new state.
 
@@ -222,6 +222,11 @@ in `assets/js/theme/checkout/checkout.jsx`, the text Checkout needed to be repla
     }
 
 ```
+
+The reason we can call `item.id` and `cart.subtotal.amount` in `cart.jsx` is because in the `checkout.jsx` file we imported `createCheckoutService` then used [`getCart()`](https://github.com/bigcommerce/checkout-sdk-js/blob/4c24192f59f696877769ce58e3284898e9e4c914/docs/classes/checkoutselector.md#getcart). Since React is based on creating reuse-able modules you can "call" a component and the object/function to use it in another file. In this case we used
+```
+<Cart cart={ checkout.getCart() } />
+``` 
 
 Files Changed:
 
