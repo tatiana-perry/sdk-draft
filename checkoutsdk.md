@@ -73,7 +73,7 @@ templates/pages/checkout.html
 
 In your copy of Cornerstone update the theme files to match [this](#add robins app link here)
 
-We are going to remove the checkout.js file. We know the checkout location is working after being added to the app.js after rendering it in the console.
+We are going to remove the `checkout.js` file. We know the checkout location is working after being added to the `app.js` after rendering it in the console.
 
 In `package.json` we need to add `"react": "^16.0.0"` and `"react-dom": "^16.0.0"`. We also need to add
 `"babel-preset-react": "^6.24.1"`. [Babel](https://babeljs.io/) is a compiler that takes JSX and converts it into JavaScript for the browser. The Babel plugin is needed to support using JSX within React.
@@ -82,7 +82,7 @@ Now we need to update `webpack.conf.js`. React uses the file extension .jsx inst
 
 At this point, you will need to run `npm install` since we've modified and added to the package.json file.
 
-Add a new folder `checkout` to `assets/js/theme/`. In the checkout folder, add a new file `checkout.jsx`. The final path should look like `assets/js/theme/checkout/checkout.jsx`. Here we import React and create the [`CheckoutComponent`](#add comp link here) for the app. Right now its going to load the word Checkout on the page.
+Add a new folder `checkout` to `assets/js/theme/`. In the checkout folder, add a new file `checkout.jsx`. The final path should look like `assets/js/theme/checkout/checkout.jsx`. Here we import React and create the `CheckoutComponent` for the app. Right now its going to load the word Checkout on the page.
 
 Add another `checkout.jsx` file in the main `theme` folder. The final path should be `assets/js/theme/checkout.jsx`
 This page imports our [`CheckoutComponent`](#add component link here) and renders it in the DOM. `<Checkout />` is our app which is going to be rendered in the `checkout-app` div we are going to create.
@@ -112,7 +112,7 @@ Now that React has been imported and we setup the skeleton for the checkout app,
 `@bigcommerce/checkout-sdk": "git+ssh://git@github.com:bigcommerce/checkout-sdk-js.git"`.
 Run `npm install` to install the package.
 
-In `assets/js/theme/checkout/checkout.jsx` we need to initialize a [`CheckoutService`](#addlink). Then we are going to add in a Checkout. In this code we are importing React and the CheckoutService. The CheckoutService loads the intial checkout state. We first call `construtor(props)` then `super(props)` since we are accessing the `props` inside the construtor class we need to use `super(props)`. To learn more about [`constructor`](https://reactjs.org/docs/react-component.html#constructor). After the component is mounted we log to the console the cart created, which has moved into the checkout portion.
+In `assets/js/theme/checkout/checkout.jsx` we need to initialize a [`CheckoutService`](https://github.com/bigcommerce/checkout-sdk-js/tree/master/docs#createcheckoutclient). Then we are going to add in a Checkout. In this code we are importing React and the CheckoutService. The CheckoutService loads the initial checkout state. We first call `constructor(props)` then `super(props)` since we are accessing the `props` inside the constructor class we need to use `super(props)`. To learn more about [`constructor`](https://reactjs.org/docs/react-component.html#constructor). After the component is mounted using [`loadCheckout`](https://github.com/bigcommerce/checkout-sdk-js/blob/master/docs/classes/checkoutclient.md#loadcheckout) we log to the cart to the console using [`getCart`](https://github.com/bigcommerce/checkout-sdk-js/blob/master/docs/classes/checkoutselector.md#getcart), which has moved into the checkout portion.
 
 ```
 import React from 'react';
@@ -141,7 +141,7 @@ export default class CheckoutComponent extends React.Component {
 
 ```
 
-Run `stencil start` and go to `http://localhost:3000/checkout` and open the the console to see a checkout object. Add something to the cart and then navigate back to the checkout to see more information loaded in the object. Keep this object in mind since it will serve as a reference for what you can show on the checkout and is needed in the next step.
+Run `stencil start` and go to `http://localhost:3000/checkout` and open the the console to see a checkout object. Add something to the cart and then navigate back to the checkout to see more information loaded in the object. Adding in `console.log` to the objects is a great way to see what the checkout objects being used are.
 
 ![Checkout Object React Console](/assets/checkout_object_console_log.png)
 
@@ -285,8 +285,8 @@ assets/js/theme/checkout/shipping.jsx
 
 ## Add Billing
 
-*Note:
-The countries and subdivisons are being pulled from fake seed data in the app. It will need to be replaced for production stores.
+* Note:
+The countries and subdivisions are being pulled from fake seed data in the app. It will need to be replaced for production stores.
 
 
 
