@@ -112,7 +112,7 @@ Now that React has been imported and we setup the skeleton for the checkout app,
 `@bigcommerce/checkout-sdk": "git+ssh://git@github.com:bigcommerce/checkout-sdk-js.git"`.
 Run `npm install` to install the package.
 
-In `assets/js/theme/checkout/checkout.jsx` we need to initialize a [`CheckoutService`](https://github.com/bigcommerce/checkout-sdk-js/tree/master/docs#createcheckoutclient). Then we are going to add in a Checkout. In this code we are importing React and the CheckoutService. The CheckoutService loads the initial checkout state. We first call `constructor(props)` then `super(props)` since we are accessing the `props` inside the constructor class we need to use `super(props)`. To learn more about [`constructor`](https://reactjs.org/docs/react-component.html#constructor). After the component is mounted using [`loadCheckout`](https://github.com/bigcommerce/checkout-sdk-js/blob/master/docs/classes/checkoutclient.md#loadcheckout) we log to the cart to the console using [`getCart`](https://github.com/bigcommerce/checkout-sdk-js/blob/master/docs/classes/checkoutselector.md#getcart), which has moved into the checkout portion.
+In `assets/js/theme/checkout/checkout.jsx` we need to initialize a [`CheckoutService`](https://github.com/bigcommerce/checkout-sdk-js/tree/master/docs#createcheckoutclient). Then we are going to add in a Checkout. In this code we are importing React and the CheckoutService. The CheckoutService loads the initial checkout state. We first call `constructor(props)` then `super(props)` since we are accessing the `props` inside the constructor class we need to use `super(props)`. To learn more about [`constructors`] in react go to: (https://reactjs.org/docs/react-component.html#constructor). After the component is mounted using [`loadCheckout`](https://github.com/bigcommerce/checkout-sdk-js/blob/master/docs/classes/checkoutclient.md#loadcheckout) we log to the cart to the console using [`getCart`](https://github.com/bigcommerce/checkout-sdk-js/blob/master/docs/classes/checkoutselector.md#getcart), which has moved into the checkout portion.
 
 ```
 import React from 'react';
@@ -158,13 +158,14 @@ package.json
 
 In your copy of Cornerstone update the theme files to match [this](#add robins app link here)
 
-We are going to add `accounting` which helps with number and currency formatting and `material-ui` which imports Google's material UI. The material ui is an optional step and you can use anything you like for styling.
-Run `npm install` and restart stencil cli if needed. Update `assets/js/theme/checkout/checkout.jsx` and create `assets/js/theme/checkout/cart.jsx` to match the the sample app. Refresh checkout and now there should be Cart with the [items] if you have added any, [Subtotal], [Shipping], [Tax] and [Total].
-[add image]
+We are going to add `accounting` which helps with number and currency formatting and `material-ui` which imports Google's material UI. These are both optional steps and help with styling in the sample app.
+Run `npm install` and restart stencil cli if needed. Update `assets/js/theme/checkout/checkout.jsx` and create `assets/js/theme/checkout/cart.jsx` to match the the sample app. Refresh checkout and now there should be Cart with the [`items`](https://github.com/bigcommerce/checkout-sdk-js/blob/master/docs/interfaces/internallineitem.md),  [`Subtotal`](https://github.com/bigcommerce/checkout-sdk-js/blob/master/docs/interfaces/internalcart.md), [`Shipping`](https://github.com/bigcommerce/checkout-sdk-js/blob/master/docs/interfaces/internalcart.md), [`Tax`](https://github.com/bigcommerce/checkout-sdk-js/blob/master/docs/interfaces/internalcart.md) and [`Total`](https://github.com/bigcommerce/checkout-sdk-js/blob/4c24192f59f696877769ce58e3284898e9e4c914/docs/interfaces/internalcart.md).
+
+![Items added in cart](/assets/add_cart.png)
 
 Let's go over `assets/js/theme/checkout/cart.jsx`. This file contains the Items, Subtotal, Shipping, Tax and Grand Total. It is broken down into list items, that can be removed or changed to create a customized option.
 
-This section loops through the items tha that have been added to the cart and displays, the name, picture(s), amount and quantity.
+This section loops through the items that have been added to the cart and displays, the name, picture(s), amount and quantity.
 
 ```
 ...
